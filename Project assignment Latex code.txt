@@ -1,0 +1,387 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{amsmath}
+
+\usepackage{graphicx} % Required for inserting images
+
+
+\vspace{10pt}
+\title{NONLINEAR DYNAMICAL SYSTEM PROJECT}
+\vspace{50pt}
+\author{N Mohammed Sohaib \\200611
+\vspace{120pt}
+\\Controlling Chaos and Achieving Synchronization\large \\in the Four-Scroll System: A Study on Chaos Control and\large \\Synchronization using Linear Feedback Control\large
+\vspace{110pt}
+\\ Indian Institute of Technology Kanpur \\
+\vspace{110pt}
+Department of Mathematics and Statistics
+\vspace{60pt}
+\\MTH658A}
+
+
+\date{12 November 2023}
+\newpage
+
+\begin{document}
+
+\maketitle
+\section*{Abstract}
+\begin{enumerate}
+  \item Introduction: 
+  \\This research paper delves into the exploration of chaos control within a novel chaotic dynamical system, specifically, a four-scroll dynamical system.
+  \item Control Strategy :
+  \\The study employs linear feedback control as a mechanism to mitigate chaos, steering the system towards previously unstable equilibria.
+  \item Chaos Synchronization
+  \\The primary objective is to achieve chaos synchronization between two identical four-scroll systems, unveiling the interconnected behavior of these dynamic entities.
+  \item Stability Analysis
+  \\Utilizing Routh–Hurwitz criteria, the paper meticulously examines the conditions determining the asymptotic stability of equilibrium points within the controlled system.
+  \item Theoretical Framework
+  \\ The attainment of synchronization is theoretically substantiated through the application of the Lyapunov stability theorem, establishing sufficient conditions for the harmonious alignment of two four-scroll systems.
+  \item Validation through Simulation
+  \\The effectiveness of the proposed chaos control and synchronization methodologies is empirically demonstrated through numerical simulations, providing tangible evidence of the system's response to the applied strategies.
+
+\end{enumerate}
+\section{Introduction}
+Chaos has been a subject of extensive exploration and study over the past two decades, particularly in the realm of nonlinear deterministic systems. These systems exhibit complex and unpredictable behavior, characterized by their sensitive dependence on initial conditions and parameter variations. The field of chaos control and synchronization has garnered significant attention, sparked by Huber's pioneering work in 1989. Various methods, including the OGY method, PC method, feedback approaches, adaptive methods, time-delay feedback, and backstepping design techniques, have since been developed.
+
+This research paper contributes to the ongoing discourse by focusing on chaos control within a novel dynamical system—a four-scroll dynamical system. The study seeks to employ linear feedback control as a mechanism to mitigate chaos, steering the system towards previously unstable equilibria. Additionally, the primary objective is to achieve chaos synchronization between two identical four-scroll systems, unveiling the interconnected behavior of these dynamic entities.
+
+\section{System design}
+The system equations considered in this paper are as follows:
+\begin{align*}
+    \dot{x} &= ax - yz \\
+    \dot{y} &= -by + xz \\
+    \dot{z} &= -cz + xy
+\end{align*}
+where a,b, and c are positive control parameters. This system exhibits a chaotic attractor at the parameter values a = 0.4,
+b = 12, and c = 5. This system has five equilibria and does not have Hopf and pitch bifurcations. 
+\begin{align*}
+    E_1 &= (0, 0, 0) \\
+    E_2 &= \left(-\sqrt{bc}, -\sqrt{ac}, \sqrt{ab}\right) \\
+    E_3 &= \left(-\sqrt{bc}, \sqrt{ac},-\sqrt{ab}\right) \\
+    E_4 &=  \left(\sqrt{bc}, -\sqrt{ac},-\sqrt{ab}\right) \\
+    E_s &=  \left(-\sqrt{bc}, \sqrt{ac}, \sqrt{ab}\right)
+\end{align*}
+\\It can display  a two-scroll chaotic attractor when a = 4.5,b = 12
+and c = 5.
+
+
+And a four-scroll chaotic attractor when a = 0.4,b = 12 and c = 5.
+%diag 2 
+
+
+From an engineering standpoint, the significance of a numerical four-scroll chaotic attractor extends beyond its mere complexity; it holds immense potential owing to its robust randomness and intricate topological properties, which contribute to a broader power spectrum. This implies that harnessing the unique characteristics of this attractor can open avenues for enhanced utility in digital and electronic devices. The exploitation of such numerical chaotic signals can revolutionize engineering applications, offering superior performance in areas like random signal generation and secure communication. In essence, the four-scroll chaotic attractor stands not just as a mathematical curiosity, but as a valuable resource for advancing the capabilities of modern technology.
+
+The divergence of the flow is given by
+\[
+\quad \nabla \cdot \mathbf{F}
+ = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z} = a - b - c < 0
+\]
+where \(\mathbf{F} = (F_1, F_2, F_3)  = (ax - by, -by + xz, -cz + xy)\).
+
+
+Then, system (1) is a forced dissipative system. Thus the solutions of the system (1) are bounded as 
+The Jacobian of the linearized system about the first equilibrium \(\mathbf{E_0}\) is 
+\\
+\[
+J = \begin{bmatrix}
+    a & 0 & 0 \\
+    0 & -b & 0 \\
+    0 & 0 & -c \\
+\end{bmatrix}
+\]
+The eigenvalues of the matrix \(J\) are \(k_1 = a\), \(k_2 = -b\), and \(k_3 = -c\).
+Therefore \(\mathbf{E_0}\) is unstable.
+The Jacobian of the linearized system about the second equilibrium \(\mathbf{E_1}\) is
+\\
+\[
+J = \begin{bmatrix}
+    a & -\gamma  & \beta \\
+    \gamma  & -b & \alpha\\
+    -\beta & \alpha & -c \\
+\end{bmatrix}
+where , \alpha = \sqrt{bc} \cdot \beta \cdot \sqrt{ac}, \quad \gamma = \sqrt{ab}
+\] 
+
+The eigenvalues of the Jacobian matrix \( J_1 \) are the roots of the characteristic polynomial
+\[
+\lambda^3 + c_1 \lambda^2 + c_2 \lambda + c_3 = 0
+\]
+where \( c_1 = -a + b + c > 0 \), \( c_2 = -ab - ac + \gamma^2 + bc + \beta^2 - \alpha^2 = 0 \), and \( c_3 = -abc + \beta^2b + 2\alpha\beta\gamma + \gamma^2c + a\alpha^2 = 4abc > 0 \). Then, according to the Routh-Hurwitz criterion, the equilibrium \( E_1 \) is unstable. Similarly, the equilibria \( E_2 \), \( E_3 \), and \( E_4\) are unstable.
+\vspace{50pt}
+%diagram1
+\begin{center}
+\includegraphics[width=0.5\textwidth]{fig1.png}
+\\Fig. 1. The chaotic attractor of two-scroll chaotic attractor at a = 4.5, b = 12 and  c = 5
+\end{center}
+\vspace{50pt}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{fig2.png}
+\\Fig. 2. The chaotic attractor of four-scroll chaotic attractor at a = 0.4, b = 12 and c = 5.
+\end{center}
+%-----------------------------------------------------------
+\section{ Chaos to Equilibrium Points}
+In this section, the chaos of the dynamical system is controlled to any of the five unstable equilibria of the system. The linear feedback control is applied to achieve this goal. For this purpose, let us assume that the equations of the controlled four-scroll chaotic system are given by
+\[
+\begin{aligned}
+    \dot{x} &= ax - yz + u_1 \\
+    \dot{y} &= -bz + xz + u_2\\
+    \dot{z} &= -cz + xy + u_3
+\end{aligned}
+\]
+where \(u_1\), \(u_2\), and \(u_3\) are external inputs. They will be suitably designed to drive the trajectory of the system, specified by \((x, y, z)\), to any of the five unstable equilibrium points of the uncontrolled system (i.e., \(u-1 = u_2 = u_3 = 0\)).
+
+For practical applications, a simple feedback controller is more desirable. Thus, we consider the control law as
+\[
+\begin{bmatrix}
+    \dot{x} \\
+    \dot{y} \\
+    \dot{z}
+\end{bmatrix}
+= -
+\begin{bmatrix}
+    0 & k_1 & 0 \\
+    0 & k_2 & 0 \\
+    0 & 0 & k_3
+\end{bmatrix}
+\begin{bmatrix}
+    x - x_d \\
+    y - y_d \\
+    z - z_d
+\end{bmatrix}
+\]
+where \((x, y, z)\) is the desired unstable equilibrium point of the chaotic system, and \(k_1\), \(k_2\), and \(k_3\) are positive feedback gains that are needed to be chosen such that the trajectory of the controlled system is stabilized to any of the five equilibrium points of the uncontrolled system. Hence, the controlled system is rewritten in the form
+\[
+\begin{aligned}
+    \dot{x} &= ax - yz - k_1 (x - \Bar{x}) \\
+    \dot{y} &= -by + xz - k_2 (y - \Bar{y}) \\
+    \dot{z} &= -cz + xy - k_3 (z - \Bar{z})
+\end{aligned}
+\]
+The controlled system  has one equilibrium point \(E = (\Bar{x}, \Bar{y}, \Bar{z})\). The Routh-Hurwitz criterion is employed to analyze the stability of the controlled system. It asserts that for the controlled system to be stable, it is necessary and sufficient for all real eigenvalues and the real parts of complex conjugate eigenvalues to be negative, contingent upon the fulfillment of the following conditions:
+\begin{enumerate}
+    \item \(c_1, c_2, c_3 > 0\)
+    \item \(c_1 c_2 > C_3\)
+\end{enumerate}
+where \(c_1,c_2\) and \(C_3\) are the coefficients of the characteristic equation
+\[
+\lambda^3 + c_1 \lambda^2 + c_2 \lambda + c_3 = 0
+\]
+of the Jacobian matrix for the linearized system of the controlled system at \(E = (\Bar{x}, \Bar{y}, \Bar{z})\).
+
+\subsection{ Stability of equilibrium around \(E_0 = (0,0,0)\)  }
+The linearized system of  controlled system rewritten about  \(E = (0, 0, 0)\) is given by
+\[
+\begin{aligned}
+    \dot{x} &= (a - k_1)x, \\
+    \dot{y} &= -(b + k_2)y, \\
+    \dot{z} &= -(c + k_2)z.
+\end{aligned}
+\]
+The Jacobian matrix of the linearized system if the above system is
+\[
+J =
+\begin{bmatrix}
+    a - k_1 & 0 & 0 \\
+    0 & -b & 0 \\
+    0 & 0 & -c
+\end{bmatrix},
+\]
+where \(k_1 = 0\) and \(k_2 = 0\). The eigenvalues J matrix \(J\) are \(-a + k_1\), \(-b\), and \(-c\). Since \(a\), \(b\), and \(c\) are positive constants, then the equilibrium solution \(E = (0, 0, 0)\) is asymptotically stable when \(k_1 > a\).
+
+Hence we deduce that, The equilibrium solution \(E_0 = (0, 0, 0)\) of the controlled system (4) is asymptotically stable, given that \(k_1 > a\), \(k_2 = 0\), and \(k_3 = 0\).
+
+\subsection{ Stability of equilibrium around \(E_1\)  }
+
+The linearized system of controlled system rewritten about $E_{1} = (-\alpha, -\beta, \gamma)$ is given by
+\begin{align*}
+\dot{x} &= (a - k_{1}) x - \gamma y + \beta z \\
+\dot{y} &= \gamma x - (b+k_{2}) y - \alpha z \\
+\dot{z} &= - \beta x - \alpha y - (c+k_{3}) z
+\end{align*}
+(6)
+
+The Jacobian matrix is
+\begin{equation*}
+J = \begin{bmatrix}
+   a-k_{1} &-\gamma&\beta \\ 
+   \gamma& -b-k_{2} &-a \\
+   - \beta &-\alpha &-c\end{bmatrix}
+\end{equation*}
+where $k_{3} = 0$.
+
+The characteristic equation of the Jacobian matrix J is of the form
+\begin{equation*}
+\lambda^3 +c_{1}\lambda^2 +c_{2} \lambda + c_{3} = 0
+\end{equation*}
+(7)
+$c_{1} = k_{2} + k_{3} + c - a + b$,\\
+$c_{2} = k_{1}k_{2}+k_1(c+b)-ab - ac + bc + \gamma^{2} + \beta^{2} - \alpha^{2} = k_{1}(c+b)$,\\
+$c_{3} = k_{1}k_{2}c - abc + k_1(bc-\alpha) + 2\alpha\beta\gamma + \gamma^2c + a\alpha^2 + b\beta^2 = k_{1}k2 + 4abc$.
+
+
+Then the Routh-Hurwitz conditions (i) and (ii) are satisfied for $k_{1} >0$, $k_{2} > 0$, and the asymptotic stability of $E_{1} = (-\alpha, -\beta, \gamma)$ of the controlled system is hence established.
+
+So, we can deduce that The equilibrium solution $E_1 = (-\alpha - \beta, \gamma)$ of the controlled system is \textbf{asymptotically stable} such that $k_1 > 0$, $k_2 > 0$, and $k_3 = 0$, where $a = \sqrt{bc}$, $B = \sqrt{ac}$, and $y = \sqrt{ab}$.
+
+The characteristic equation for the Jacobian matrix of the linearized system resulting from the control scheme described in (4), with positive feedback gains $k_1 > 0$, $k_2 > 0$, and $k_3 = 0$, around each equilibrium $E_2$, $E_3$, and $E_4$ is given by Eq. (7). Consequently, each of the equilibria $E_2$, $E_3$, $E_4$ for the controlled system (4) exhibits \textbf{asymptotic stability} under the conditions $k_1 > 0$, $k_2 > 0$, and $k_3 = 0$.
+
+\section{Numerical simulations and solutions}
+
+To validate the proposed control method outlined in the preceding section for managing chaos, we conducted numerical simulations. The controlled system (referred to as System 4) was integrated through numerical experiments using the fourth-order Runge–Kutta method, employing a time step of 0.001. For all simulations, we set the parameters \(a\), \(b\), and \(c\) as follows:
+\begin{center}
+    \(a = 0.4\), \(b = 12\), and \(c = 5\),
+\end{center}  
+ensuring that the four-scroll system exhibits chaotic behavior in the absence of control.\\
+The initial states of the controlled system (System 4) were consistently initialized as
+\begin{center}
+    \(x(0) = 1\), \(y(0) = 1\), \(z(0) = 1\).
+\end{center} To stabilize chaos to \(E_0\), we selected feedback gains as 
+\begin{center}
+    \(k_1 = 4\), \(k_2 = 0\), \(k_3 = 0\). 
+\end{center}
+To stabilize chaos to \(E_1\), \(E_2\), \(E_3\), and \(E_4\), we opted for feedback gains as 
+\begin{center}
+    \(k_1 = 4\), \(k_2 = 1\), \(k_3 = 0\). 
+\end{center} 
+The state trajectories (\(x\), \(y\), and \(z\)) of the controlled system, depicted in Fig. 3(a)–(e), illustrate that chaos can be effectively stabilized at each equilibrium point (\(E_0\), \(E_1\), \(E_2\), \(E_3\), and \(E_4\)).
+\\The control intervention was activated at \(t = 20\) in all simulations.\\
+\vspace{70pt}
+\begin{tabular}{cc}
+\includegraphics[width=0.5\textwidth]{3a.png} &\includegraphics[width=0.5\textwidth]{3b.png}  \\
+\includegraphics[width=0.5\textwidth]{3c.png} &\includegraphics[width=0.5\textwidth]{3d.png} \\
+
+\end{tabular}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{3e.png}
+
+\end{center}
+\small{Fig3. The time response of the states \((x, y, z)\) of the controlled system (4) with time \(t\). The control is activated at \(t = 20\). (a) Stabilizing chaos to equilibrium \(E_0\), \(k_1 = 4\), \(k_2 = 0\), \(k_3 = 0\). (b)--(e) Stabilizing chaos to equilibrium \(E_1, E_2, E_3, E_4\), respectively, \(k_1 = 4\), \(k_2 = 1\), \(k_3 = 0\).}
+\section{Synchronized Dynamics of a Quadruple-Scroll Chaotic Attractor}
+
+
+
+Here, We employ a linear feedback control approach to attain the synchronization of chaos in two identical four-scroll systems. Consider the system with \\ As the driving force controlling the system  \\ The definitions of the driving and response systems are outlined below.
+
+The drive system is 
+\[
+\begin{aligned}
+    \dot{x_1} &= ax_1 - y_1 z_1, \\
+    \dot{y_1} &= -b y_1 + x_1 z_1, \\
+    \dot{z_1} &= -c z_1 + x_1 y_1.
+\end{aligned}
+\]
+
+ The response system is
+\[
+\begin{aligned}
+    \dot{x_2} &= ax_2 - y_2 z_2 -u_1, \\
+    \dot{y_2} &= -b y_2 + x_2 z_2 -u_2, \\
+    \dot{z_2} &= -c z_2 + x_2 y_2 -u_3.
+\end{aligned}
+\]
+
+Where \(u = [u_1, u_2, u_3]\) is the controller. Suppose 
+\[ u_1 = k_1 e_1, \quad u_2 = k_2 e_2, \quad u_3 = k_3 e_3 \]
+where \(e_1, e_2\), and \(e_3\) are the error states satisfying 
+\[ e_1 = x_2 - x_1, \quad e_2 = y_2 - y_1, \quad e_3 = z_2 - z_1 \]
+and \(k_1, k_2\), and \(k_3\) are positive real constants. 
+\begin{align*}
+    \dot{x}_2 - \dot{x}_1 &= (ax_2 - y_2 z_2 - u_1) - (ax_1 - y_1 z_1), \\
+    \dot{y}_2 - \dot{y}_1 &= (-b y_2 + x_2 z_2 - u_2) - (-b y_1 + x_1 z_1), \\
+    \dot{z}_2 - \dot{z}_1 &= (-c z_2 + x_2 y_2 - u_3) - (-c z_1 + x_1 y_1).
+\end{align*}
+\begin{align*}
+    \dot{x}_2 - \dot{x}_1 &= ax_2 - y_2 z_2 - k_1 e_1 - (ax_1 - y_1 z_1), \\
+    \dot{y}_2 - \dot{y}_1 &= -b y_2 + x_2 z_2 - k_2 e_2 - (-b y_1 + x_1 z_1), \\
+    \dot{z}_2 - \dot{z}_1 &= -c z_2 + x_2 y_2 - k_3 e_3 - (-c z_1 + x_1 y_1).
+\end{align*}
+\begin{align*}
+    \dot{x}_2 - \dot{x}_1 &= y_1 z_1 - y_2 z_2 - k_1 e_1, \\
+    \dot{y}_2 - \dot{y}_1 &= -x_1 z_1 + x_2 z_2 - k_2 e_2, \\
+    \dot{z}_2 - \dot{z}_1 &= x_1 y_1 - x_2 y_2 - k_3 e_3.
+\end{align*}
+
+we obtain the following error system as 
+\[
+\begin{aligned}
+    \dot{e_1} &= (a -k_1) e_1 -e_2 e_3 -y_1e_3 - z_1 e_2 \\
+    \dot{e_2} &= -(b + k_2) e_2 + e_1 e_3 + x_1 e_3 + z_1 e_1 \\
+    \dot{e_3} &= -(c + k_3) e_3 + e_1 e_2 + x_1 e_2 + y_1 e_1
+\end{aligned}
+\]
+Now, we prove that the zero solution of the error system above is asymptotically stable.To prove this , we define a \textbf{Lyapunov function} for the error system  as follows
+\[ V = e_1^2 + \frac{1}{2} e_2^2 + \frac{1}{2} e_3^2 \]
+
+The time derivative of \(V\) along the trajectory of the error system leads us  to
+\[
+\begin{aligned}
+    \dot{V} &= -2(k_1 - a)e_1^2 - (b + k_2)e_2^2 - (c + k_3)e_3^2
+     + 2x_1 e_2 e_3 - y_1 e_1 e_3 -z_1 e_1 e_2 \\
+     &\quad \le -2(k_1 - a)e_1^2 - (b + k_2)e_2^2 -
+     - (c + k_3)e_3^2 + 2M_x|e_2 e_3| + M_y |e_1 e_3| + M_z |e_1 e_2| \\
+     &= -E^T P E
+\end{aligned}
+\]
+where \(E = [|e_1|, |e_2|, |e_3|]^T\), \(M_x, M_y, M_z\) are the upper bounds of the absolute values of variables \(x, y, z\) respectively, and
+\[
+P = 
+\begin{bmatrix}
+    2(k_1 - a) & -\frac{M_z}{2} & \frac{M_y}{2} \\
+    -\frac{M_z}{2} & b + k_2 & -M_x \\
+    -\frac{M_y}{2} & -M_x & c + k_3
+\end{bmatrix}
+\]
+Certainly, to guarantee the asymptotic stability of the error system (12), it is imperative that the matrix \( P \) is positive definite, indicating that the associated \( \dot{V} \) is negative definite. This condition is met only when the specified set of inequalities below  is satisfied.
+
+\begin{align*}
+    &(i) \quad k_1 > a, \\
+    &(ii) \quad (k_1 - a)(b + k_2) > \frac{M_z^2}{8}, \\
+    &(iii) \quad 2(k_1 - a)\left[(b + k_2)(c + k_3) - M^2\right] \\
+    &\quad >  \frac{M_z}{2}\left[\frac{M_z}{2}(c + k_3) + \frac{M_x M_y}{2}\right] + \frac{M_y}{2}\left[\frac{M_y}{2}(b + k_2) + \frac{M_xM_z}{2}\right].
+\end{align*}
+
+
+ The integration process utilizing the fourth-order Runge-Kutta method is applied to solve the systems of differential equations drive system  and response system, employing a time step of 0.001. 
+\\ The parameters chosen for the four-scroll system, specifically \(a = 0.4\), \(b = 12\), and \(c = 5\), ensure the manifestation of chaotic behavior. \\
+\vspace{50pt}
+
+\begin{tabular}{cc}
+\includegraphics[width=0.4\textwidth]{4a.png} &\includegraphics[width=0.4\textwidth]{4b.png}  \\
+\end{tabular}
+\begin{center}
+\includegraphics[width=0.4\textwidth]{4c.png}
+\end{center}
+
+{\small Figure 4 illustrates the temporal evolution of states for both the driving system (equation 8) and the response system (equation 9). The initiation of control occurs at \(t = 20\), with specified feedback gains \(k_1 = 100\), \(k_2 = k_3 = 15\). Subplots (a), (b), and (c) depict the time responses of states \(x_1\) and \(x_2\), \(y_1\) and \(y_2\), and \(z_1\), respectively. The time response graphs provide a comprehensive view of the system dynamics, showcasing the impact of control activation on the states of both the drive and response systems.}
+\\Initial values for the drive and response systems are set as \(x_1(0) = 1\), \(y_1(0) = 1\), \(z_1(0) = 1\) and \(x_2(0) = -10\), \(y_2(0) = -17\), \(z_2(0) = 15\), respectively. 
+\\ Simultaneously, the error system (21) is initialized with \(e_1(0) = -11\), \(e_2(0) = -18\), \(e_3(0) = 14\).
+\\  Feedback gains are designated as \(k_1 = 100\), \(k_2 = 15\), \(k_3 = 15\). Control activation uniformly commences at time \(t = 20\) across all simulations. 
+\\ The time response of states \(x_1\), \(y_1\), \(z_1\) for the drive system and states \(x_2\), \(y_2\), \(z_2\) for the response system  is illustrated in Fig. 4(a-c). Additionally, Fig. 5 depicts the dynamics of synchronization errors for both the drive and response systems.
+\vspace{50pt}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{fig5.png} % Replace "figure_path" with the actual path to your figure
+    \caption{\small Fig. 5. Dynamics of synchronization errors (\(e_1, e_2, e_3\)) states for systems (8) and (9). The control is activated at \(t = 20\).}
+    \label{fig:synchronization_errors}
+\end{figure}
+\section{Conclusion}
+This study is focused on the management of chaos and the achievement of synchronization within a novel chaotic system known as the four-scroll system, employing linear feedback control. The equilibrium points' asymptotic stability conditions for the controlled system are determined using the Routh–Hurwitz criteria. The conditions for attaining synchronization between two identical four-scroll systems through linear feedback control are deduced using the Lyapunov stability theorem. The validity of these outcomes is confirmed through numerical simulations.
+
+In summary, this paper delivers into the challenge of controlling chaos and attaining synchronization in the four-scroll system, utilizing linear feedback control to quell chaos and stabilize the system at unstable equilibrium points. The Routh-Hurwitz criteria are utilized to scrutinize the stability conditions of these equilibrium points. Furthermore, the Lyapunov stability theorem is employed to derive the conditions for achieving synchronization between two identical four-scroll systems.
+
+The research results underscore the efficacy of the proposed chaos control and synchronization strategies as evidenced by numerical simulations. The controlled system is steered towards various equilibrium points, namely \(E_0\), \(E_1\), \(E_2\), \(E_3\), and \(E_4\), through the careful selection of appropriate feedback gains. The Routh-Hurwitz criterion is instrumental in ensuring the asymptotic stability of these equilibrium points. Moreover, linear feedback control successfully achieves chaos synchronization between two identical four-scroll systems.
+
+This paper imparts valuable insights into the intricacies of the four-scroll system dynamics, equilibrium point stability analysis, and chaos control and synchronization methodologies. The suggested approaches hold promise for application across diverse fields dealing with chaotic systems. The effectiveness of the proposed control and synchronization techniques is validated through numerical simulations, indicating their feasibility for practical implementation.
+
+In essence, this research contributes significantly to the comprehension and regulation of chaos within the four-scroll system, establishing a groundwork for further exploration and applications in chaos control and synchronization.
+
+\section{References}
+1) https://www.sciencedirect.com/science/article/pii/S0960077905001372?ref=pdf_download&fr=RR-2&rr=824f57dbcdad8aee \\
+2) https://en.wikipedia.org/wiki/Control_of_chaos\\
+3) https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.64.1196\\
+4) https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.64.1196\\
+5) https://www.learnlatex.org/en\\
+6) https://www.sciencedirect.com/science/article/pii/S0370157399000964
+
+\end{document}
